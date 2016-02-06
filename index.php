@@ -69,6 +69,9 @@ function logout(){
 	FB.logout(function(response) {
 	});
 }
+function deletetoken(token){
+	if(confirm("Delete?")) document.location = 'delete.php?token=' + token;
+}
 </script>
 
 <div id="status"></div>
@@ -98,7 +101,7 @@ function logout(){
 		);
 		$row = SELECT($query);
 		foreach ($row as $temp) {
-			echo '<tr><td>'.$temp['datetime'].'</td><td>'.$temp['token'].'</td><td><a href="delete.php?token='.$temp['token'].'">delete</a></td></tr>';
+			echo '<tr><td>'.$temp['datetime'].'</td><td>'.$temp['token'].'</td><td><button onclick="deletetoken(\''.$temp['token'].'\')">delete</a></td></tr>';
 		}
 		?>
 </table>
