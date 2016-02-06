@@ -93,9 +93,12 @@ function logout(){
 		$query->where = array(
 			array('fbid',$data['id'])
 		);
+		$query->order = array(
+			array('datetime')
+		);
 		$row = SELECT($query);
 		foreach ($row as $temp) {
-			echo '<tr><td>'.$temp['datetime'].'</td><td>'.$temp['token'].'</td><td></td></tr>';
+			echo '<tr><td>'.$temp['datetime'].'</td><td>'.$temp['token'].'</td><td><a href="delete.php?token='.$temp['token'].'">delete</a></td></tr>';
 		}
 		?>
 </table>
